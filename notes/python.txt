@@ -1,0 +1,43 @@
+Running a pythong program
+
+C:\Users\smrut\Desktop\course4\Python3.6.lnk "F:/HigherStudies/python/addnum.py"
+
+tuple not-modifiable hashable so its fast (like append and all wont work)
+						tuple	list 	set 	frozenset	dict
+Mutable/can be modified	No		Yes		Yes		Yes			Yes
+Hashed					yes		No		No		No			Yes
+
+
+To find current working directory
+import os
+os.getcwd() >> to get current working directory
+os.chdir(path) >> to change current working directory
+
+F:/HigherStudies/python/Python/
+
+
+>>> os.chdir('C:/Users/Rph/AppData/Local/Programs
+>>>
+>>>
+>>> os.listdir()
+['DLLs', 'Doc', 'emacs', 'include', 'init.el', 'L
+WS.txt', 'python.exe', 'python3.dll', 'python35.d
+, 'README.txt', 'Scripts', 'show-keys.el', 'tcl',
+>>>
+>>>
+>>> f = open('.emacs','w')
+>>> f.write('test')
+4
+>>> f.readline()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+io.UnsupportedOperation: not readable
+>>> f.readline()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+io.UnsupportedOperation: not readable
+>>>
+>>>
+>>>
+>>> f.close()
+>>>
