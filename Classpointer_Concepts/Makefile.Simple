@@ -1,0 +1,12 @@
+
+output:main.o class_common.o
+	/usr/bin/g++ main.o class_common.o -o classexec
+
+main.o:main.cpp
+	/usr/bin/g++ -c main.cpp
+
+class_common.o:class_common.cpp
+	/usr/bin/g++ -c class_common.cpp
+
+clean:
+	rm *.o

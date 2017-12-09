@@ -6,7 +6,8 @@ tuple not-modifiable hashable so its fast (like append and all wont work)
 						tuple	list 	set 	frozenset	dict
 Mutable/can be modified	No		Yes		Yes		Yes			Yes
 Hashed					yes		No		No		No			Yes
-
+so python compiler looks at variables in local, globla nd addlocal in that order. Note that the interpreter looks for symbols like def, class or = to see
+if there is any issues
 
 To find current working directory
 import os
