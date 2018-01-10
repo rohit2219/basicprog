@@ -42,3 +42,13 @@ io.UnsupportedOperation: not readable
 >>>
 >>> f.close()
 >>>
+5)  In c++ there are 1d and 2d arrays, IN python we have lists YOu CAn  define 2d arrays(or lists as per oython) in python using list comprehension
+You're technically trying to index an uninitialized array. You have to first initialize the outer list with lists before adding items; Python calls this "list comprehension".
+
+# Creates a list containing 5 lists, each of 8 items, all set to 0
+w, h = 8, 5;
+Matrix = [[0 for x in range(w)] for y in range(h)] 
+You can now add items to the list:
+Matrix[0][0] = 1
+Matrix[6][0] = 3 # error! range... 
+Matrix[0][6] = 3 # valid
