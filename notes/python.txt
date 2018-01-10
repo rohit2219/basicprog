@@ -52,3 +52,204 @@ You can now add items to the list:
 Matrix[0][0] = 1
 Matrix[6][0] = 3 # error! range... 
 Matrix[0][6] = 3 # valid
+
+
+NOTES FROM BBG
+
+code templates
+python
+
+
+>>> cnxn=pyodbc.connect("DSN=IPCC_MSSQL")
+>>> cur=cnxn.cursor()
+>>> row=cursor.fetchall()
+>>> sqlq="select getdate()"
+>>> rows=cur.execute(sqlq)
+>>> for row in rows: print row[0]
+
+in case if you are using pypyodbc
+export PYTHONPATH="/home/sysidxdev/tmp/pythonpath"  or export PATH=/home/charantr/work/npackage/bin/:$PATH
+suppose pypyodbc is in a folder inside this path,
+them use >>> cnxn=pypyodbc3.pypyodbc.connect("DSN=IPCC_MSSQL")
+
+
+Installing anaconda for dataanalysis
+
+download anaconda from below link.
+http://docs.continuum.io/anaconda/install#updating-from-older-anaconda-versions
+
+you cans pecify it to be included in your local. run 
+
+
+
+analysis module
+
+1) get current directory and list current directory files
+os.getcwd()
+os.listdir()
+2) accessing dict and converting tuple into dict - useful for SQL>>> y['x']
+ x=(('x', 1), ('b', 2), ('c', 3)) is a tuple
+ y=dict(x)
+ >>> y
+{'x': 1, 'c': 3, 'b': 2}
+>>> y['x'] - accessing elements in a tuple
+
+
+
+
+3) accessing SQL, pramods code >>> MISSING conection to SQL code
+PYTHONPATH=/home/idxdev/lib/pythonlib/python3.3/site-packages:/home/idxdev/lib/pythonlibtest/python3.3/custom
+
+>>> import DBUtil
+>>> ob = DBUtil.DBUtil("/home/idxdev/conf/odbc.ini")
+>>> sql= "Select top 10 name,id from sysobjects"
+>>> rs = ob.get_sql_resultset("MSSQLUAT3_PCS",sql)
+>>> print (rs)
+[('sysrscols', 3), ('sysrowsets', 5), ('sysallocunits', 7), ('sysfiles1', 8), ('syspriorities', 17), ('sysfgfrag', 19), ('sysphfg', 23), ('sysprufiles', 24), ('sysftinds', 25), ('sysowners', 27)]
+
+
+4)lists tuples and sets
+Here are the differences (taken from BlackJack's comment below)
+
+Data Type | Immutable | Ordered | Unique Values
+			(NOT change
+			at will)
+===============================================
+  lists   |    no     |   yes   |      no
+  tuples  |    yes    |   yes   |      no
+   sets   |    no     |   no    |      yes
+   only mutable sets are hashable.
+Immutable - the data type can't be changed after instantiation.
+Ordered - the order of the elements within the data type are persistent.
+Unique Values - the data type cannot have repeated value
+read - http://www.thomas-cokelaer.info/tutorials/python/data_structures.html
+A substitute to json in python is a tuple.
+eg:
+>>> x={'a':(1,2),'b':(3,4)}
+>>> x['a'][0]
+>>> x={'a':(1,2),'b':(3,4)}
+5) regex
+
+match will return if a line has matched a search pattern
+string_comment=re.match('^\/\*',line).group(0) ( check if the variable line has started^ with a ""/*" /-> \/ in the exp).Spots comments in C header 
+string_hash=re.match('^\#',line).group(0) ( check if the variable line has started^ with a ""#" #-> \# in the exp). Spots comments in C header
+string pattern comparison
+>>> x=re.match('\w\d\d\d\d\d',cu).group(0)
+>>> 
+'A23456'
+>>> y="\w\d\d\d\d\d"
+>>> x=re.match(y,cu).group(0)
+>>> x
+'A23456'
+Simple string search
+>>> a='KKKK OUTPUT FFFF'
+>>> re.search("OUTPUT",a).group(0)
+'OUTPUT'
+search_string=('/*','#','//') any(x in string for x in search_string) is True means if any element common between "string" and search_string
+6)
+config = json.loads(open(jsonfile).read())
+temppath = config["commonparm"]["temppath"]
+
+7)
+create temporary directory
+    try:
+        shutil.rmtree(temppath)
+    except FileNotFoundError:
+        prin.print_char("No final_comp to delete")
+
+    os.mkdir(temppath)
+    os.chmod(temppath,0o777)
+    os.chdir(temppath)
+8) useful pandas read
+
+idcfile="/home/idxrepos3/indexfeeds2/bin/rohit/idcout.csv"
+bbgfile="/home/idxrepos3/indexfeeds2/bin/rohit/priceagg_bbg.out"
+
+idc_df=pd.read_csv(idcfile,skiprows=1,sep="|",usecols=[1,2],names=["cusip","idcprice"])
+
+bbg_df=pd.read_csv(bbgfile,skiprows=1,sep="|",index_col=0,usecols=[0,1],names=["cusip","bbgprice"])
+
+muniuat_df=pd.read_table(muniuatfile,delim_whitespace=True,usecols=[0,1,2],names=['cusip','bbgprice','dropadd'])
+
+
+domestic fields dataframe operations
+dom_df=pd.read_csv(domfile,sep="|",header='infer',low_memory=False)
+
+SUMMARY N TRANSPOSE
+dom_df.describe() >> summarizes
+dom_df.describe().transpose() >> summarizes n does a transpose
+dom_df.describe().Coupon.dtype >> get one field "Coupon's" dtype, exclude dtpe and it gives a full summary
+dom_df['Coupon'].mean() >> get mean, like that you have max(), min(),sum(),count()
+ 
+selecting
+dom_df['Cusip'].head() 
+dom_df[['Cusip','Coupon']].head() >> multiple columns
+list(dom_df.columns.values) >>
+
+retrieve certian columns based on conditions
+dom_df[(dom_df.IndFlgCan == "FORWARD") | (dom_df.IndFlgCan == "BACKWARD")][['IndexFlag','IndFlgCan','TypPlacmt','Currency','TypeBond']].head()
+
+You can do this too to write to a dataframe
+df_2=dom_df[(dom_df.IndFlgCan == "FORWARD") | (dom_df.IndFlgCan == "BACKWARD") | (dom_df.IndFlgCan == "BOTH_IND" )][['IndexFlag','IndFlgCan','TypPlacmt','Currency','TypeBond']]
+df_2.to_csv('/tmp/rohit/temp.csv')
+
+Reading indexed DF
+prod_df=pd.read_csv("/home/idxtmp/solaris-uat/uat/scripts/convert-daily.txt",sep="|",index_col=0,header='infer')
+ prod_df.ix['domestic'] >> this will give you the particular row
+ prod_df['productdirectory']  >> columns along with the index values, select as per index value
+ 
+ 9) Parm passing, code to pass proper getopts kinda parm to python
+import getopt
+import json
+import pwd
+import re
+import shutil
+
+usage="<scriptname> --sandbox /ixph --bisftploc /ixph/bb/bis/bisftp_home_dev/ --curhostname bisdvlspub01 --workdir=/bb/bis/tmp/<username>"
+
+try:
+    opts, args = getopt.getopt(sys.argv[1:], 'h', ['help','sandbox=', 'bisftploc=', 'curhostname=', 'workdir=','config=' ])
+except getopt.GetoptError:
+    usage()
+    sys.exit(2)
+
+print(args,"--",opts)
+hostname_placeholder=""
+bisftp_placeholder=""
+sandbox_placeholder=""
+jsonfile=""
+username=pwd.getpwuid( os.getuid() )[0]
+
+for opt, arg in opts:
+#    print("looping",opt,arg)
+    if opt in ('-h', '--help'):
+        usage
+        sys.exit(2)
+    elif opt in ('--sandbox'):
+        sandbox_placeholder = arg
+    elif opt in ('--bisftploc'):
+        bisftp_placeholder = arg
+    elif opt in ('--curhostname'):
+        hostname_placeholder = arg
+    elif opt in ('--workdir'):
+        workdir = arg
+    elif opt in ('--config'):
+        jsonfile = arg
+    elif opt in ('-h','--help'):
+        usage
+        sys.exit(0)
+    else:
+        usage
+        sys.exit(2)
+curpath=os.getcwd()
+if workdir=="":
+    workdir="/bb/bis/tmp/"+ username + "/"
+if jsonfile=="":
+    jsonfile="./prod2dev_parser.json"
+    print("no jsonfile defaulting to  ./prod2dev_parser.json")
+
+
+replace_dict={"SANDBOX_PLC":sandbox_placeholder,"HOSTNAME_PLC":hostname_placeholder,"BISFTP_PLC":bisftp_placeholder}
+print("parameters",sandbox_placeholder,hostname_placeholder,bisftp_placeholder,jsonfile)
+ 
+ 
