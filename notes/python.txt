@@ -197,7 +197,24 @@ Reading indexed DF
 prod_df=pd.read_csv("/home/idxtmp/solaris-uat/uat/scripts/convert-daily.txt",sep="|",index_col=0,header='infer')
  prod_df.ix['domestic'] >> this will give you the particular row
  prod_df['productdirectory']  >> columns along with the index values, select as per index value
- 
+ creating DF without indexes
+df = pd.DataFrame(columns=['idIndex','diffNumIss', 'diffPriceE', 'diffConvexity', 'diffDuration'])
+>>> df
+Empty DataFrame
+Columns: [idIndex, diffNumIss, diffPriceE, diffConvexity, diffDuration]
+>>> df.loc[0]=[1,0, 7.969999999999999, 0.026000000000000002, 0.0207]
+
+>>> df_file=pd.read_csv(file,header='infer',low_memory=False)
+>>> df1=df_file[:1]
+>>> pd.merge(df1, df, on='idIndex',)
+  idIndex   Desc  NumIss  PriceE  Convexity  Duration  UATNumIss  UATPriceE  \
+0       1  USAGG    9400  109.07      0.034    0.0255       9400      101.1
+
+   UATConvexity  UATDuration  diffNumIss  diffPriceE  diffConvexity  \
+0         0.008       0.0048         0.0        7.97          0.026
+
+   diffDuration
+0        0.0207
  9) Parm passing, code to pass proper getopts kinda parm to python
 import getopt
 import json
@@ -247,8 +264,10 @@ if workdir=="":
 if jsonfile=="":
     jsonfile="./prod2dev_parser.json"
     print("no jsonfile defaulting to  ./prod2dev_parser.json")
-
-
+numpy - useful data numpy.linspace... it gives us intervals of values .. Can be used for approximate modelling of bond price..
+numpy.linspace(start, stop, num=2) 
+>>> np.linspace(2, 4, 2)
+array([ 2.,  4.])
 replace_dict={"SANDBOX_PLC":sandbox_placeholder,"HOSTNAME_PLC":hostname_placeholder,"BISFTP_PLC":bisftp_placeholder}
 print("parameters",sandbox_placeholder,hostname_placeholder,bisftp_placeholder,jsonfile)
  

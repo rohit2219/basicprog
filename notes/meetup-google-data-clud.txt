@@ -1,0 +1,36 @@
+big query data can be uploaded using dataprep 
+and analysed using google data studio this access bigquery db
+
+event time - time when the event happened.. 
+processing time - when our api got the data of when the event happened (the candy crush example)
+
+
+relatonal algebra
+tiffzhang for ur own webpage
+
+like specify the log format in Bigquery, which will create a table in Bigquery.
+Then use google studio to generate the analytics
+even for running analytics, for people running websites and website traffic
+
+
+practical dev group in new york .. follow in twitter
+
+
+bq load 
+-q --max_bad_records=10000 --source_format=CSV --noallow_jagged_rows --field_delimiter="|" 
+--noallow_quoted_newlines --skip_leading_rows=0 --ignore_unknown_values --encoding=UTF-8 
+--quote=\" ${DATASET}.transactions gs://campaign-funding/indiv*.txt 
+CMTE_ID,AMNDT_IND,RPT_TP,TRANSACTION_PGI,IMAGE_NUM,TRANSACTION_TP,ENTITY_TP,NAME,CITY,STATE,ZIP_CODE,EMPLOYER,OCCUPATION,TRANSACTION_DT,TRANSACTION_AMT:FLOAT,OTHER_ID,TRAN_ID,FILE_NUM,MEMO_CD,MEMO_TEXT,SUB_ID
+
+bq load \
+-q \
+--source_format=CSV \
+--noallow_jagged_rows \
+--field_delimiter="|" \
+--noallow_quoted_newlines \
+--skip_leading_rows=0 \
+--ignore_unknown_values \
+--encoding=UTF-8 \
+${DATASET}.candidates \
+gs://campaign-funding/cn*.txt \
+CAND_ID,CAND_NAME,CAND_PTY_AFFILIATION,CAND_ELECTION_YR,CAND_OFFICE_ST,CAND_OFFICE,CAND_OFFICE_DISTRICT,CAND_ICI,CAND_STATUS,CAND_PCC,CAND_ST1,CAND_ST2,CAND_CITY,CAND_ST,CAND_ZIP

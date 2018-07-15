@@ -1,0 +1,63 @@
+Karma is the test runner 
+	- spawn browsers run jasmine in side them from cli 
+	- rerun test with changes
+	- enables to rerun testd from cli , whenever there is a change in source code 
+Jasmine is the testing framework used in Angular cli. 
+BDD/TDD 
+name of the test file should be sys.spec.ts
+Commonly used functions are 
+	Describe()  --> Suite / group of related tests
+	it() --> defines the spec / testing : for each 
+	
+Defintion 
+	
+	describe(name of the system under test, function that test runner calls)
+	{
+		it(testname, function )
+		{
+			result = function call
+			expect(result).tobe(20) --> used for numbers
+						.toContain('JOsh') --> used for strings /array 
+						.tobefalsy()
+						.tobegreaterthan()
+						.tobeDefined()
+		}
+	}
+	
+	
+karma runs as soon as it detects the change in source file.. reruns the tests 
+ng test --> launches browser window connected to karma 
+debug using chrom developer tools 
+
+
+
+Pattern 
+
+ setup & tearDown -> state change of component 
+	Structure AAA - Arrnage , Act 
+		describe()
+		{
+			it()
+			{
+				let component = new component
+				component.function()
+				expect().tobe()
+			}
+		}		
+	Clean state -> 
+		beforeEach() --> re intialize objects 
+		{
+			let component = new component
+		}
+		afterEach() {} --> cleanup code 
+		beforeAll() --> run once
+		afterAll() --> run once
+		
+Jasmine - only runs test all the files are loaded in browser ie jasmine HTML file 
+
+
+GRUN/GULP --> CLI to run / execute files 
+karma - handle angular cli 
+ng test --> tests in our project in Jasmine via Karma.
+DISABLE 
+You can disable tests without commenting them our by just pre-pending x to the describe or it
