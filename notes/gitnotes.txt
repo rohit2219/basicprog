@@ -1,0 +1,97 @@
+Rohit Charantharayil (BLOOMBERG/ 731 LEX) <rcharanthary@bloomberg.net>
+	
+Thu, Dec 28, 2017, 1:54 PM
+	
+to me
+Git logs
+
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/nightly_scripts>git remote add upstream git@bbgithub.dev.bloomberg.com:BIS/nightly_scripts.git
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/nightly_scripts>git remote add upstream git@bbgithub.dev.bloomberg.com:BIS/nightly_scripts.git
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/nightly_scripts>git remote -v
+origin  git@bbgithub.dev.bloomberg.com:rcharanthary/nightly_scripts.git (fetch)
+origin  git@bbgithub.dev.bloomberg.com:rcharanthary/nightly_scripts.git (push)
+upstream        git@bbgithub.dev.bloomberg.com:BIS/nightly_scripts.git (fetch)
+upstream        git@bbgithub.dev.bloomberg.com:BIS/nightly_scripts.git (push)
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/nightly_scripts>
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/nightly_scripts>
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/nightly_scripts>
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/nightly_scripts>git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       modified:   sandbox_settings.ksh
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/nightly_scripts>git commit -am "pricedate 20170207"
+[master 3430e0c] pricedate 20170207
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/nightly_scripts>git push
+Counting objects: 5, done.
+Delta compression using up to 128 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 334 bytes, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To git@bbgithub.dev.bloomberg.com:rcharanthary/nightly_scripts.git
+   8d6474c..3430e0c  master -> master
+
+   Then  
+  
+
+ git clone git@bbgithub.dev.bloomberg.com:BIS/nightly_scripts.git
+ cd nightly_scripts/
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/auto_branch/nightly_scripts>git status
+# On branch master
+nothing to commit (working directory clean)
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/auto_branch/nightly_scripts>git branch fix-automation
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/auto_branch/nightly_scripts>
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/auto_branch/nightly_scripts>git checkout fix-automation
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/auto_branch/nightly_scripts>git checkout fix-automation
+Switched to branch 'fix-automation'
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/auto_branch/nightly_scripts>git branch
+* fix-automation
+  master
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/auto_branch/nightly_scripts>cp -p /home/rcharanthary/gitbox/nightly_scripts/EUROAGG_run.ksh .
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/auto_branch/nightly_scripts>git status
+# On branch fix-automation
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       modified:   EUROAGG_run.ksh
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/auto_branch/nightly_scripts>git commit -am "minor fix automation"
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/auto_branch/nightly_scripts>git push --set-upstream origin fix-automation
+Counting objects: 5, done.
+Delta compression using up to 128 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 400 bytes, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To git@bbgithub.dev.bloomberg.com:BIS/nightly_scripts.git
+ * [new branch]      fix-automation -> fix-automation
+Branch fix-automation set up to track remote branch fix-automation from origin.
+
+   deploying to 6 machines
+   less /bb/bis1/hack/filePush.ksh
+  bisdvlspubnys01:/home/rcharanthary/gitbox/idq_gitbox/indexprod/bin $ git commit -am "IDQ-change-rohit branch"
+[IDQ-change-rohit ccd2bb3] IDQ-change-rohit branch
+ 4 files changed, 151 insertions(+), 62 deletions(-)
+ bisdvlspubnys01:/home/rcharanthary/gitbox/idq_gitbox/indexprod/bin $ git remote -v
+origin  git@bbgithub.dev.bloomberg.com:rcharanthary/indexprod.git (fetch)
+origin  git@bbgithub.dev.bloomberg.com:rcharanthary/indexprod.git (push)
+upstream        git@bbgithub.dev.bloomberg.com:BIS/indexprod.git (fetch)
+upstream        git@bbgithub.dev.bloomberg.com:BIS/indexprod.git (push)
+
+bisdvlspubnys01:/home/rcharanthary/gitbox/idq_gitbox/indexprod/bin $ git push origin IDQ-change-rohit
+Counting objects: 17, done.
+Delta compression using up to 128 threads.
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (11/11), 3.31 KiB, done.
+
+  
+Getting latest code from your local
+bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/misc-scripts>git fetch origin
