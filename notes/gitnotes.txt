@@ -95,3 +95,33 @@ Writing objects: 100% (11/11), 3.31 KiB, done.
   
 Getting latest code from your local
 bisdvlspubnys01:(rcharanthary)/home/rcharanthary/gitbox/misc-scripts>git fetch origin
+
+
+rohit@rohit:~/sandbox/SR-Front$ git branch -a
+* develop
+  remotes/origin/HEAD -> origin/develop
+  remotes/origin/develop
+  remotes/origin/master
+  remotes/origin/readme
+  remotes/origin/rohit_refactor
+rohit@rohit:~/sandbox/SR-Front$ git fetch upstream
+rohit@rohit:~/sandbox/SR-Front$ git branch -a ( see that after the fetch upstream, all the branches came to remote)
+
+* develop
+  remotes/origin/HEAD -> origin/develop
+  remotes/origin/develop
+  remotes/origin/master
+  remotes/origin/readme
+  remotes/origin/rohit_refactor
+  remotes/upstream/Angular6Upgrade
+
+
+
+
+
+
+
+
+
+
+
