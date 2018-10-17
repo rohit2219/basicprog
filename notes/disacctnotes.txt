@@ -1,0 +1,7 @@
+to bring up disaster account
+npm install 
+npm run start:dev
+
+pull request for angular6 upgrade
+https://github.com/Disaster-Accountability-Project/SR-Front/pull/750/files
+
