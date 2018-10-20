@@ -2,6 +2,7 @@ to bring up disaster account
 npm install 
 npm run start:dev
 
+access through the baseUrl http://localhost:4200/
 pull request for angular6 upgrade
 https://github.com/Disaster-Accountability-Project/SR-Front/pull/750/files
 

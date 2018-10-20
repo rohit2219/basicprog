@@ -115,6 +115,10 @@ rohit@rohit:~/sandbox/SR-Front$ git branch -a ( see that after the fetch upstrea
   remotes/origin/rohit_refactor
   remotes/upstream/Angular6Upgrade
 
+to fetch a pull request 
+git fetch upstream pull/786/head:pr786 (here i fetched pull request 786 to a branch pr786). not do
+a git checkout pr786 and do the PR
+
 
 
 
