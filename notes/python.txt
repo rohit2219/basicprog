@@ -271,4 +271,7 @@ array([ 2.,  4.])
 replace_dict={"SANDBOX_PLC":sandbox_placeholder,"HOSTNAME_PLC":hostname_placeholder,"BISFTP_PLC":bisftp_placeholder}
 print("parameters",sandbox_placeholder,hostname_placeholder,bisftp_placeholder,jsonfile)
  
- 
+ 10) Lambda expressions
+ initArr=lambda x:[0 for i in range(x)]
+>>> initArr(5)
+[0, 0, 0, 0, 0]
