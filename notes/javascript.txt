@@ -141,3 +141,68 @@ console.log(c.toString());
 var b = new Date(2018,0,1); // 1 Jan -> 30 Dec
 b.setDate(b.getDate() - 2);
 console.log(b.toString());
+
+
+3) Closure example with creating 
+var addto = function(passed){
+ var closevar=3;
+var inner = function(inner){
+		return passed + inner + closevar; 
+	};
+return inner;
+}
+addthree=addto(3);
+console.dir(addthree)
+
+Closure example with privacy, see the below example, priviateCounter cannot accessed outside the class other than from public methods
+
+var counter = (function() {
+  var privateCounter = 0;
+  function changeBy(val) {
+    privateCounter += val;
+  }
+  return {
+    increment: function() {
+      changeBy(1);
+    },
+    decrement: function() {
+      changeBy(-1);
+    },
+    value: function() {
+      return privateCounter;
+    }
+  };   
+})();
+
+console.log(counter.value());
+counter.increment();
+counter.increment();
+console.log(counter.value()); 
+counter.decrement();
+console.log(counter.value());
+console.log(counter.privateCounter)
+
+4) functional programming
+Functional programming favors:
+>>Pure functions instead of shared state & side effects
+>>Immutability over mutable data
+>>Function composition over imperative flow control
+>>Lots of generic, reusable utilities that use higher order functions to act on many data types instead of methods that only operate on their colocated data
+>>Declarative rather than imperative code (what to do, rather than how to do it) >> means you dont pass data and modify it, instead u use map function to use objects and make a change
+>>Expressions over statements
+>>Containers & higher order functions over ad-hoc polymorphism
+
+5) Higher order functions
+JavaScript has first class functions, which allows us to treat functions as data — assign them to variables, pass them to other functions, return them from functions, etc…
+
+A higher order function is any function which takes a function as an argument, returns a function, or both. Higher order functions are often used to:
+
+Abstract or isolate actions, effects, or async flow control using callback functions, promises, monads, etc…
+Create utilities which can act on a wide variety of data types
+Partially apply a function to its arguments or create a curried function for the purpose of reuse or function composition
+Take a list of functions and return some composition of those input functions
+
+6) What is a Promise?
+A promise is an object that may produce a single value some time in future.
+So its used to handle http call..
+obersvables are cancellable, can handle multiple events
